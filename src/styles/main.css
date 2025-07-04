@@ -1,0 +1,184 @@
+/* Global styles for Lạc GO app */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Custom utility classes */
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+/* Green gradient background for auth screens */
+.mountain-background {
+  background: linear-gradient(180deg, #1B5E20 0%, #2E7D32 50%, #4CAF50 100%);
+  background-attachment: fixed;
+}
+
+/* Animation classes */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+/* Material Design elevation shadows */
+.elevation-1 {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12) !important;
+}
+
+.elevation-2 {
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12) !important;
+}
+
+.elevation-4 {
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !important;
+}
+
+.elevation-8 {
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12) !important;
+}
+
+/* Custom spacing */
+.pa-8 {
+  padding: 32px !important;
+}
+
+.ma-8 {
+  margin: 32px !important;
+}
+
+/* Responsive design helpers */
+@media (max-width: 599px) {
+  .mobile-padding {
+    padding: 16px !important;
+  }
+  
+  .mobile-margin {
+    margin: 16px !important;
+  }
+}
+
+/* Custom button styles */
+.v-btn--rounded {
+  border-radius: 12px !important;
+}
+
+/* Card styling */
+.v-card {
+  border-radius: 12px !important;
+}
+
+/* Form field styling */
+.v-field {
+  border-radius: 8px !important;
+}
+
+/* Bottom navigation styling */
+.v-bottom-navigation .v-btn {
+  min-width: 0 !important;
+  flex: 1 !important;
+}
+
+/* Loading state styling */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-state .v-icon {
+  opacity: 0.6;
+  margin-bottom: 16px;
+}
+
+/* Success/Error message styling */
+.success-message {
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.error-message {
+  color: #F44336;
+  font-weight: 500;
+}
+
+/* Primary color variations */
+.primary-light {
+  background-color: #81C784 !important;
+}
+
+.primary-dark {
+  background-color: #1B5E20 !important;
+}
+
+/* Text color utilities */
+.text-primary {
+  color: #4CAF50 !important;
+}
+
+.text-secondary {
+  color: #2E7D32 !important;
+}
+
+.text-medium-emphasis {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.text-high-emphasis {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Custom transitions */
+.slide-up-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-up-leave-active {
+  transition: all 0.3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-up-enter-from, .slide-up-leave-to {
+  transform: translateY(20px);
+  opacity: 0;
+}
