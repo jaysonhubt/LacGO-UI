@@ -38,6 +38,7 @@
             block
             class="login-btn"
             :loading="loading"
+            rounded="xl"
         >
           <v-icon class="mr-2">mdi-login</v-icon>
           Đăng nhập
@@ -174,13 +175,8 @@ const loginWithApple = () => {
 }
 
 .login-btn {
-  height: 56px;
-  border-radius: 16px;
+  height: 48px !important;
   font-weight: 600;
-  font-size: 16px;
-  /*background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);*/
-  margin-bottom: 24px;
-  text-transform: none;
 }
 
 .divider {

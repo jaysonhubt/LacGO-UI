@@ -32,8 +32,7 @@
             block
             class="mb-6 submit-btn"
             :loading="loading"
-            rounded="12"
-            elevation="2"
+            rounded="xl"
         >
           <v-icon class="mr-2">mdi-send</v-icon>
           Tiếp tục
@@ -114,21 +113,7 @@ const handleForgotPassword = async () => {
 }
 
 .submit-btn {
-  /*height: 48px !important;*/
-  /*font-weight: 600;*/
-  /*text-transform: none;*/
-  height: 56px;
-  border-radius: 16px;
+  height: 48px !important;
   font-weight: 600;
-  font-size: 16px;
-  /*background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);*/
-  margin-bottom: 24px;
-  text-transform: none;
-}
-
-@media (max-width: 480px) {
-  .submit-btn {
-    height: 44px !important;
-  }
 }
 </style>

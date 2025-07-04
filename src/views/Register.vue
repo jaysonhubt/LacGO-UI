@@ -67,9 +67,9 @@
             color="primary"
             size="large"
             block
-            class="mb-4"
+            class="mb-4 submit-btn"
             :loading="authStore.loading"
-            rounded="lg"
+            rounded="xl"
         >
           Tạo tài khoản
         </v-btn>
@@ -166,6 +166,10 @@ const handleRegister = async () => {
   font-weight: 600;
   color: #1e293b;
   margin: 0 0 8px 0;
+}
+.submit-btn {
+  height: 48px !important;
+  font-weight: 600;
 }
 
 @media (max-width: 480px) {
