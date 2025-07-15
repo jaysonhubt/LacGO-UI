@@ -1,9 +1,9 @@
 <template>
   <!-- Login Form -->
-  <v-card class="login-card" elevation="0">
-    <v-card-text class="login-form">
+  <v-card class="auth-card" elevation="12">
+    <v-card-text class="auth-form">
       <div class="form-header">
-        <h2 class="form-title">Đăng nhập</h2>
+        <h2 class="form-title text-primary">Đăng nhập</h2>
         <p class="form-subtitle">Chào mừng bạn quay lại</p>
       </div>
 
@@ -36,7 +36,7 @@
             color="primary"
             size="large"
             block
-            class="login-btn"
+            class="submit-btn"
             :loading="loading"
             rounded="xl"
         >
@@ -90,6 +90,7 @@
 import { ref,inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import '@/assets/css/auth.css'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -139,44 +140,8 @@ const loginWithApple = () => {
 </script>
 
 <style scoped>
-
-.login-card {
-  background: white;
-  border-radius: 24px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-}
-
-.login-form {
-  padding: 32px 24px 24px;
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-title {
-  font-size: 28px;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0 0 8px 0;
-}
-
-.form-subtitle {
-  font-size: 16px;
-  color: #64748b;
-  margin: 0;
-}
-
 .login-input {
   margin-bottom: 15px;
-}
-
-.login-btn {
-  height: 48px !important;
-  font-weight: 600;
 }
 
 .divider {
@@ -249,15 +214,5 @@ const loginWithApple = () => {
 .register-link {
   font-size: 16px;
   font-weight: 600;
-}
-
-@media (max-width: 480px) {
-  .login-form {
-    padding: 14px 20px 20px;
-  }
-
-  .form-title {
-    font-size: 24px;
-  }
 }
 </style>

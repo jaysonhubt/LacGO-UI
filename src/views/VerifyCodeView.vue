@@ -1,64 +1,53 @@
 <template>
-  <v-container fluid class="verify-code-container">
-    <div class="mountain-background"></div>
-    <div class="verify-code-content">
-      <div class="logo-section">
-        <LogoComponent />
+  <v-card class="verify-code-form" elevation="8" rounded="xl">
+    <v-card-text>
+      <div class="text-center mb-6">
+        <h2 class="text-h5 font-weight-bold text-primary mb-2">Xác nhận mã</h2>
+        <p class="text-body-2 text-medium-emphasis">
+          Nhập mã xác nhận đã được gửi đến email hoặc số điện thoại của bạn
+        </p>
       </div>
-      
-      <v-card class="verify-code-form" elevation="8" rounded="xl">
-        <v-card-text class="pa-8">
-          <h2 class="text-center mb-6 text-h4 font-weight-bold">Xác nhận mã</h2>
-          <p class="text-center text-medium-emphasis mb-6">
-            Nhập mã xác nhận đã được gửi đến email hoặc số điện thoại của bạn
-          </p>
-          
-          <v-form @submit.prevent="handleVerifyCode" ref="form">
-            <v-text-field
-              v-model="verificationCode"
-              label="Mã xác nhận"
-              variant="outlined"
-              :rules="codeRules"
-              prepend-inner-icon="mdi-shield-key"
-              class="mb-4"
-              required
-              maxlength="6"
-              counter
-            />
-            
-            <v-btn
-              type="submit"
-              color="primary"
-              size="large"
-              block
-              class="mb-4"
-              :loading="authStore.loading"
-              rounded="lg"
-            >
-              Xác nhận
-            </v-btn>
-          </v-form>
-          
-          <div class="text-center">
-            <span class="text-medium-emphasis">Không nhận được mã? </span>
-            <a href="#" class="text-primary text-decoration-none" @click.prevent="resendCode">
-              Gửi lại
-            </a>
-          </div>
-          
-          <div class="text-center mt-3">
-            <router-link to="/forgot-password" class="text-primary text-decoration-none">
-              Quay lại
-            </router-link>
-          </div>
-        </v-card-text>
-      </v-card>
-    </div>
-    
-    <v-snackbar v-model="showError" color="error" :timeout="3000">
-      {{ authStore.error }}
-    </v-snackbar>
-  </v-container>
+
+      <v-form @submit.prevent="handleVerifyCode" ref="form">
+        <v-text-field
+            v-model="verificationCode"
+            label="Mã xác nhận"
+            variant="outlined"
+            :rules="codeRules"
+            prepend-inner-icon="mdi-shield-key"
+            class="mb-4"
+            required
+            maxlength="6"
+            counter
+        />
+
+        <v-btn
+            type="submit"
+            color="primary"
+            size="large"
+            block
+            class="mb-4"
+            :loading="authStore.loading"
+            rounded="lg"
+        >
+          Xác nhận
+        </v-btn>
+      </v-form>
+
+      <div class="text-center">
+        <span class="text-medium-emphasis">Không nhận được mã? </span>
+        <a href="#" class="text-primary text-decoration-none" @click.prevent="resendCode">
+          Gửi lại
+        </a>
+      </div>
+
+      <div class="text-center mt-3">
+        <router-link to="/forgot-password" class="text-primary text-decoration-none">
+          Quay lại
+        </router-link>
+      </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script setup lang="ts">

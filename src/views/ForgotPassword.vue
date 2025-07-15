@@ -1,13 +1,13 @@
 <template>
   <!-- Forgot Password Form -->
-  <v-card class="forgot-password-form mt-8" elevation="12" rounded="20">
-    <v-card-text class="pa-8">
-      <div class="text-center mb-6">
+  <v-card class="auth-card" elevation="12">
+    <v-card-text class="auth-form">
+      <div class="form-header">
         <v-icon size="64" color="primary" class="mb-4">
           mdi-lock-reset
         </v-icon>
-        <h2 class="text-h5 font-weight-bold text-primary mb-2">Quên mật khẩu?</h2>
-        <p class="text-body-2 text-medium-emphasis">
+        <h2 class="form-title text-primary">Quên mật khẩu?</h2>
+        <p class="form-subtitle">
           Nhập email hoặc số điện thoại để nhận mã xác nhận
         </p>
       </div>
@@ -64,6 +64,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import '@/assets/css/auth.css'
 
 const router = useRouter()
 
@@ -106,14 +107,4 @@ const handleForgotPassword = async () => {
 </script>
 
 <style scoped>
-.forgot-password-form {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.submit-btn {
-  height: 48px !important;
-  font-weight: 600;
-}
 </style>
