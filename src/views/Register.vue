@@ -1,8 +1,8 @@
 <template>
-  <v-card class="register-card" elevation="0">
-    <v-card-text class="register-form">
+  <v-card class="auth-card" elevation="12">
+    <v-card-text class="auth-form">
       <div class="form-header">
-        <h2 class="form-title">Tạo tài khoản</h2>
+        <h2 class="form-title text-primary">Tạo tài khoản</h2>
       </div>
 
       <v-form @submit.prevent="handleRegister" ref="form">
@@ -88,6 +88,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
+import '@/assets/css/auth.css'
 
 const authStore = useAuthStore()
 const form = ref()
@@ -144,42 +145,10 @@ const handleRegister = async () => {
 </script>
 
 <style scoped>
-.register-card {
-  background: white;
-  border-radius: 24px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-}
-
-.register-form {
-  padding: 32px 24px 24px;
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.form-title {
-  font-size: 28px;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0 0 8px 0;
-}
 .submit-btn {
   height: 48px !important;
   font-weight: 600;
 }
 
-@media (max-width: 480px) {
-  .register-form {
-    padding: 24px 20px 20px;
-  }
-
-  .form-title {
-    font-size: 24px;
-  }
-}
 </style>
 

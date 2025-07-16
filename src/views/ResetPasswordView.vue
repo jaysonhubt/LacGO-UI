@@ -1,77 +1,67 @@
 <template>
-  <v-container fluid class="reset-password-container">
-    <div class="mountain-background"></div>
-    <div class="reset-password-content">
-      <div class="logo-section">
-        <LogoComponent />
+  <!-- Reset password Form -->
+  <v-card class="auth-card" elevation="12">
+    <v-card-text class="auth-form">
+      <div class="form-header">
+        <h2 class="form-title text-primary">Đặt lại mật khẩu</h2>
+        <p class="form-subtitle">Nhập mật khẩu mới cho tài khoản của bạn</p>
       </div>
-      
-      <v-card class="reset-password-form" elevation="8" rounded="xl">
-        <v-card-text class="pa-8">
-          <h2 class="text-center mb-6 text-h4 font-weight-bold">Đặt lại mật khẩu</h2>
-          <p class="text-center text-medium-emphasis mb-6">
-            Nhập mật khẩu mới cho tài khoản của bạn
-          </p>
-          
-          <v-form @submit.prevent="handleResetPassword" ref="form">
-            <v-text-field
-              v-model="newPassword"
-              label="Mật khẩu mới"
-              variant="outlined"
-              :type="showNewPassword ? 'text' : 'password'"
-              :rules="passwordRules"
-              prepend-inner-icon="mdi-lock"
-              :append-inner-icon="showNewPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append-inner="showNewPassword = !showNewPassword"
-              class="mb-4"
-              required
-            />
-            
-            <v-text-field
-              v-model="confirmPassword"
-              label="Xác nhận mật khẩu mới"
-              variant="outlined"
-              :type="showConfirmPassword ? 'text' : 'password'"
-              :rules="confirmPasswordRules"
-              prepend-inner-icon="mdi-lock-check"
-              :append-inner-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append-inner="showConfirmPassword = !showConfirmPassword"
-              class="mb-4"
-              required
-            />
-            
-            <v-btn
-              type="submit"
-              color="primary"
-              size="large"
-              block
-              class="mb-4"
-              :loading="authStore.loading"
-              rounded="lg"
-            >
-              Đặt lại mật khẩu
-            </v-btn>
-          </v-form>
-          
-          <div class="text-center">
-            <router-link to="/login" class="text-primary text-decoration-none">
-              Quay về đăng nhập
-            </router-link>
-          </div>
-        </v-card-text>
-      </v-card>
-    </div>
-    
-    <v-snackbar v-model="showError" color="error" :timeout="3000">
-      {{ authStore.error }}
-    </v-snackbar>
-  </v-container>
+
+      <v-form @submit.prevent="handleResetPassword" ref="form">
+        <v-text-field
+            v-model="newPassword"
+            label="Mật khẩu mới"
+            variant="outlined"
+            :type="showNewPassword ? 'text' : 'password'"
+            :rules="passwordRules"
+            prepend-inner-icon="mdi-lock"
+            :append-inner-icon="showNewPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append-inner="showNewPassword = !showNewPassword"
+            class="mb-4"
+            required
+        />
+
+        <v-text-field
+            v-model="confirmPassword"
+            label="Xác nhận mật khẩu mới"
+            variant="outlined"
+            :type="showConfirmPassword ? 'text' : 'password'"
+            :rules="confirmPasswordRules"
+            prepend-inner-icon="mdi-lock-check"
+            :append-inner-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append-inner="showConfirmPassword = !showConfirmPassword"
+            class="mb-4"
+            required
+        />
+
+        <v-btn
+            type="submit"
+            color="primary"
+            size="large"
+            block
+            class="mb-4"
+            :loading="authStore.loading"
+            rounded="lg"
+        >
+          Đặt lại mật khẩu
+        </v-btn>
+      </v-form>
+
+      <div class="text-center">
+        <router-link to="/login" class="text-primary text-decoration-none">
+          <v-icon class="mr-2" color="primary">mdi-arrow-left</v-icon>
+          Quay lại đăng nhập
+        </router-link>
+      </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import LogoComponent from '@/components/LogoComponent.vue'
+import '@/assets/css/auth.css'
 
 const authStore = useAuthStore()
 const form = ref()

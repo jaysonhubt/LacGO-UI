@@ -45,20 +45,15 @@
           Chúng tôi sẽ gửi mã xác nhận 6 số đến email hoặc số điện thoại của bạn
         </p>
       </div>
+
+      <div class="text-center mt-6">
+        <router-link to="/login" class="text-primary text-decoration-none">
+          <v-icon class="mr-2" color="primary">mdi-arrow-left</v-icon>
+          Quay lại đăng nhập
+        </router-link>
+      </div>
     </v-card-text>
   </v-card>
-
-  <!-- Back to Login Link -->
-  <div class="text-center mt-6">
-    <router-link
-        to="/login"
-        class="text-white font-weight-bold text-decoration-none d-flex align-center justify-center"
-        style="text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"
-    >
-      <v-icon class="mr-2" color="white">mdi-arrow-left</v-icon>
-      Quay lại đăng nhập
-    </router-link>
-  </div>
 </template>
 
 <script setup>

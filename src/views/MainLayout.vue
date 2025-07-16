@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main class="main-content">
+    <v-main class="main-content py-0">
       <router-view />
     </v-main>
     
@@ -14,28 +14,23 @@
       height="70"
     >
       <v-btn @click="navigateTo('/')" :value="0">
-        <v-icon>mdi-home</v-icon>
-        <span>Trang chủ</span>
+        <v-icon>mdi-home-outline</v-icon>
       </v-btn>
       
       <v-btn @click="navigateTo('/messages')" :value="1">
-        <v-icon>mdi-message</v-icon>
-        <span>Tin nhắn</span>
+        <v-icon>mdi-message-text-outline</v-icon>
       </v-btn>
       
       <v-btn @click="navigateTo('/trips')" :value="2">
-        <v-icon>mdi-car</v-icon>
-        <span>Chuyến đi</span>
+        <v-icon>mdi-car-outline</v-icon>
       </v-btn>
       
       <v-btn @click="navigateTo('/promotions')" :value="3">
-        <v-icon>mdi-gift</v-icon>
-        <span>Khuyến mãi</span>
+        <v-icon>mdi-gift-outline</v-icon>
       </v-btn>
       
       <v-btn @click="navigateTo('/profile')" :value="4">
-        <v-icon>mdi-account</v-icon>
-        <span>Cá nhân</span>
+        <v-icon>mdi-account-outline</v-icon>
       </v-btn>
     </v-bottom-navigation>
   </v-app>
