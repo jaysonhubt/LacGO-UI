@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import type { LoginRequest, RegisterRequest, User } from '@/types/auth'
-import { authService } from '@/services/api'
+import { authService } from '@/services/auth'
 
 export const useAuthStore = defineStore('auth', () => {
   const isAuthenticated = ref(false)
@@ -13,32 +13,16 @@ export const useAuthStore = defineStore('auth', () => {
   const router = useRouter()
 
   const login = async (credentials: LoginRequest) => {
-    try {
-      loading.value = true
-      error.value = null
-      
-      // Mock successful login since API is not working
-      const response = await authService.login(credentials)
-      
-      user.value = {
-        id: '1',
-        name: 'Người dùng',
-        email: credentials.email,
-        phone: '0123456789',
-        avatar: ''
-      }
-      isAuthenticated.value = true
-      
-      // Save to localStorage
-      localStorage.setItem('auth_token', 'mock_token')
-      localStorage.setItem('user', JSON.stringify(user.value))
-      
-      router.push('/')
-    } catch (err) {
-      error.value = 'Đăng nhập thất bại'
-    } finally {
-      loading.value = false
-    }
+    const response = await authService.login(credentials)
+
+    user.value = response.user
+    isAuthenticated.value = true
+
+    // Save to localStorage
+    localStorage.setItem('auth_token', response.accessToken)
+    localStorage.setItem('user', JSON.stringify(user.value))
+
+    return response;
   }
 
   const register = async (userData: RegisterRequest) => {
