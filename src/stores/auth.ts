@@ -9,6 +9,8 @@ export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null)
   const loading = ref(false)
   const error = ref<string | null>(null)
+  const accessToken = ref<String | null>(null)
+  const refreshToken = ref<String | null>(null)
 
   const router = useRouter()
 
@@ -16,10 +18,13 @@ export const useAuthStore = defineStore('auth', () => {
     const response = await authService.login(credentials)
 
     user.value = response.user
+    accessToken.value = response.accessToken
+    refreshToken.value = response.refreshToken
     isAuthenticated.value = true
 
     // Save to localStorage
-    localStorage.setItem('auth_token', response.accessToken)
+    localStorage.setItem('accessToken', response.accessToken)
+    localStorage.setItem('refreshToken', response.refreshToken)
     localStorage.setItem('user', JSON.stringify(user.value))
 
     return response;
@@ -43,7 +48,8 @@ export const useAuthStore = defineStore('auth', () => {
       isAuthenticated.value = true
       
       // Save to localStorage
-      localStorage.setItem('auth_token', 'mock_token')
+      localStorage.setItem('accessToken', 'mock_token')
+      localStorage.setItem('refreshToken', 'mock_token')
       localStorage.setItem('user', JSON.stringify(user.value))
       
       router.push('/')
@@ -57,18 +63,21 @@ export const useAuthStore = defineStore('auth', () => {
   const logout = () => {
     user.value = null
     isAuthenticated.value = false
-    localStorage.removeItem('auth_token')
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
     localStorage.removeItem('user')
     router.push('/login')
   }
 
-  const checkAuthStatus = () => {
-    const token = localStorage.getItem('auth_token')
-    const userData = localStorage.getItem('user')
-    
+  const checkAuthStatus = async () => {
+    const token = accessToken.value || localStorage.getItem('accessToken')
+    const userData = user || JSON.parse(localStorage.getItem('user'))
+
     if (token && userData) {
       try {
-        user.value = JSON.parse(userData)
+        const response = await authService.checkAuthStatus()
+        console.log(response, 'response')
+        user.value = userData
         isAuthenticated.value = true
       } catch (err) {
         logout()

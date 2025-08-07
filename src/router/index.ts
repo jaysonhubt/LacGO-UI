@@ -69,12 +69,20 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore()
+router.beforeEach(async (to, from, next) => {
 
-  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+  // if (token && !authStore.user) {
+  //   try {
+  //     await authStore.checkAuthStatus() // Gọi API /me
+  //   } catch (err) {
+  //     localStorage.removeItem('token')
+  //   }
+  // }
+
+  const token = localStorage.getItem('accessToken')
+  if (to.meta.requiresAuth && !token) {
     next('/login')
-  } else if (to.meta.requiresGuest && authStore.isAuthenticated) {
+  } else if (to.meta.requiresGuest && token) {
     next('/')
   } else {
     next()

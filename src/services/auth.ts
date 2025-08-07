@@ -12,17 +12,11 @@ class ApiService {
     async login(credentials: { email: string; password: string }) {
         const response = await api.post(AUTH_API_ENDPOINTS.login, credentials)
         return response.data
-        //
-        // return this.mockRequest({
-        //     user: {
-        //         id: '1',
-        //         name: 'Người dùng',
-        //         email: credentials.email,
-        //         phone: '0123456789',
-        //         avatar: ''
-        //     },
-        //     token: 'mock_token'
-        // })
+    }
+
+    async checkAuthStatus() {
+        const response = await api.get(AUTH_API_ENDPOINTS.me)
+        return response.data
     }
 
     async register(userData: { name: string; email: string; phone: string; password: string }) {
