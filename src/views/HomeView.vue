@@ -17,7 +17,7 @@
         <h1 class="text-h4 font-weight-bold text-white mb-2">
           Xin chào, {{ authStore.user?.name || 'Bạn' }}! 👋
         </h1>
-        <p class="text-h6 text-white opacity-90">Đặt xe liên tỉnh nhanh chóng</p>
+        <p class="text-h6 text-white opacity-90">Đặt xe nhanh chóng</p>
       </div>
     </div>
   </div>
@@ -361,7 +361,7 @@ const searchVehicles = () => {
 
 /* Gradient Header */
 .gradient-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(45deg, #30792d 0%, #96d96e 100%);
   padding-bottom: 40px;
   position: relative;
   overflow: hidden;
