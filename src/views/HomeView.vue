@@ -30,78 +30,84 @@
           <h3 class="text-h6 font-weight-bold text-primary">🚗 Đặt xe ngay</h3>
         </div>
 
-        <div class="location-inputs">
-          <div class="location-from mb-4">
-            <v-text-field
-                v-model="bookingForm.from"
-                label="Điểm đón"
-                variant="outlined"
-                prepend-inner-icon="mdi-map-marker-circle"
-                placeholder="Nhập địa điểm đón"
-                color="primary"
-                class="location-input"
-                clearable
-            >
-              <template v-slot:prepend-inner>
-                <v-icon color="success">mdi-circle</v-icon>
-              </template>
-            </v-text-field>
+
+        <div class="location-area">
+          <div class="location-inputs">
+            <div class="location-from mb-4">
+              <v-text-field
+                  v-model="bookingForm.from"
+                  label="Điểm đón"
+                  variant="outlined"
+                  prepend-inner-icon="mdi-map-marker-circle"
+                  placeholder="Nhập địa điểm đón"
+                  color="primary"
+                  class="location-input"
+                  clearable
+              >
+                <template v-slot:prepend-inner>
+                  <v-icon color="success">mdi-circle</v-icon>
+                </template>
+              </v-text-field>
+            </div>
+
+            <div class="location-to mb-4">
+              <v-text-field
+                  v-model="bookingForm.to"
+                  label="Điểm đến"
+                  variant="outlined"
+                  prepend-inner-icon="mdi-map-marker"
+                  placeholder="Nhập điểm đến"
+                  color="primary"
+                  class="location-input"
+                  clearable
+              >
+                <template v-slot:prepend-inner>
+                  <v-icon color="error">mdi-map-marker</v-icon>
+                </template>
+              </v-text-field>
+            </div>
           </div>
 
-          <div class="swap-button-container">
-            <v-btn
-                icon
-                size="small"
-                color="primary"
-                variant="outlined"
-                class="swap-btn"
-                @click="swapLocations"
-            >
-              <v-icon>mdi-swap-vertical</v-icon>
-            </v-btn>
-          </div>
-
-          <div class="location-to mb-4">
-            <v-text-field
-                v-model="bookingForm.to"
-                label="Điểm đến"
-                variant="outlined"
-                prepend-inner-icon="mdi-map-marker"
-                placeholder="Nhập điểm đến"
-                color="primary"
-                class="location-input"
-                clearable
-            >
-              <template v-slot:prepend-inner>
-                <v-icon color="error">mdi-map-marker</v-icon>
-              </template>
-            </v-text-field>
+          <div class="swap-location">
+            <div class="swap-button-container">
+              <v-btn
+                  icon
+                  size="small"
+                  color="primary"
+                  class="swap-btn"
+                  @click="swapLocations"
+              >
+                <v-icon>mdi-swap-vertical</v-icon>
+              </v-btn>
+            </div>
           </div>
         </div>
 
-        <!-- Date and Time Selection -->
-        <v-row class="mb-4">
-          <v-col cols="6">
-            <v-text-field
-                v-model="bookingForm.date"
-                label="Ngày đi"
-                variant="outlined"
-                prepend-inner-icon="mdi-calendar"
-                readonly
-                @click="dateDialog = true"
-            />
-          </v-col>
-          <v-col cols="6">
-            <v-text-field
-                v-model="bookingForm.time"
-                label="Giờ đi"
-                variant="outlined"
-                prepend-inner-icon="mdi-clock-outline"
-                readonly
-                @click="timeDialog = true"
-            />
-          </v-col>
-        </v-row>
+        <div class="datetime-area">
+          <!-- Date and Time Selection -->
+          <v-row class="mb-4">
+            <v-col cols="6">
+              <v-text-field
+                  v-model="bookingForm.date"
+                  label="Ngày đi"
+                  variant="outlined"
+                  prepend-inner-icon="mdi-calendar"
+                  readonly
+                  @click="dateDialog = true"
+              />
+            </v-col>
+            <v-col cols="6">
+              <v-text-field
+                  v-model="bookingForm.time"
+                  label="Giờ đi"
+                  variant="outlined"
+                  prepend-inner-icon="mdi-clock-outline"
+                  readonly
+                  @click="timeDialog = true"
+              />
+            </v-col>
+          </v-row>
+        </div>
 
         <!-- Quick Actions -->
         <div class="quick-actions mb-4">
@@ -123,7 +129,7 @@
 
         <v-btn
             color="primary"
-            size="x-large"
+            size="large"
             block
             class="search-btn"
             rounded="xl"
@@ -408,25 +414,32 @@ const searchVehicles = () => {
   backdrop-filter: blur(10px);
 }
 
+.location-area {
+  display: flex;
+}
 .location-inputs {
   position: relative;
+  width: calc(100% - 40px);
 }
 
-.swap-button-container {
-  display: flex;
-  justify-content: center;
-  margin: -10px 0;
+.swap-location {
+  width: 40px;
   position: relative;
-  z-index: 1;
 }
 
 .swap-btn {
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
   color: white;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.datetime-area {
+  width: calc(100% - 40px);
 }
 
 .search-btn {
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
   color: white;
   font-weight: bold;
 }
