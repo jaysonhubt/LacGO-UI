@@ -88,12 +88,11 @@
           <v-row class="mb-4">
             <v-col cols="6">
               <v-text-field
-                  v-model="bookingForm.date"
+                  v-model="selectedDate"
+                  type="date"
                   label="Ngày đi"
                   variant="outlined"
-                  prepend-inner-icon="mdi-calendar"
-                  readonly
-                  @click="dateDialog = true"
+                  :min="new Date().toISOString().substr(0, 10)"
               />
             </v-col>
             <v-col cols="6">
